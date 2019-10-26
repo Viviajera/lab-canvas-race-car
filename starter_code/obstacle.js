@@ -4,11 +4,14 @@ function random(from, to) {
 
 class Obstacle {
   constructor() {
-    // TODO
+    this.w= Math.floor(Math.random()*800+30);
+    this.h= 100;
+    this.x= Math.floor(Math.random()*1000);
   }
 
   draw() {
-    // TODO
+    ctx.fillStyle ="black"; 
+    ctx.fillRect(this.x,0,this.w,this.h); 
   }
 
   hits(car) {

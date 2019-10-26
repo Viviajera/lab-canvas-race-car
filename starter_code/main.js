@@ -8,24 +8,46 @@ const W = ctx.canvas.width;
 const H = ctx.canvas.height;
 
 function draw() {
-  //
-  // Iteration 1: road drawing
-  //
+  ctx.fillStyle="pink";
+  ctx.fillRect(0,0,1000,1600); 
 
-  // TODO
+  ctx.fillStyle="grey";
+  ctx.fillRect(50,0,900,1600); 
 
-  //
+  ctx.fillStyle="white";
+  ctx.fillRect(70,0,20,1600); 
+
+  ctx.fillStyle="white";
+  ctx.fillRect(910,0,20,1600); 
+
+  
+  ctx.beginPath(); 
+  ctx.setLineDash ([50,70]);
+  ctx.lineWidth = 15;
+  ctx.strokeStyle= "white"; 
+  ctx.moveTo(500,0);
+  ctx.lineTo(500,1600);
+  ctx.stroke();
+  ctx.closePath();
+
   // Iteration 2: car drawing
-  //
-
-  // TODO
+  car.draw();
 
   //
   // Iteration #4: obstacles
-  //
+  var arrObstacles=[];
+ 
+  function updateObstacles(){
+    arrObstacles.push(new Obstacle);  
+    var int =   setInterval(function(){
+      for (i = 0; i < arrObstacles.length; i++) {
+        arrObstacles[i].draw();
+      arrObstacles[i].y += 15;
+}},3000)
+    
 
-  // TODO
-
+}
+  updateObstacles();
   //
   // Iteration #5: collisions
   //
@@ -40,11 +62,19 @@ function draw() {
 
 }
 
-document.onkeydown = function (e) {
-  if (!car) return;
+document.onkeydown = function(e){
+  switch (e.which){
+    case 37:
+    car.moveLeft(); 
+    break; 
+    case 39: 
+    car.moveRight(); 
+  }
+}
+
+  //if (!car) return;
   
   // TODO
-}
 
 let frames = 0;
 function animLoop() {
@@ -58,7 +88,10 @@ function animLoop() {
 }
 
 function startGame() {
-  // TODO
+  car = new Car();
+  
+  
+ 
 
   requestAnimationFrame(animLoop);
 }

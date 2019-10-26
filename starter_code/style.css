@@ -1,5 +1,7 @@
 body {
   margin:0;
+  padding:0; 
+  box-sizing: border-box; 
 
   font-size: 18px;
   font-family: "Verdana";
@@ -13,8 +15,16 @@ body >div {flex:1;}
   justify-content:center; align-items:center;
 }
 
+img {
+  filter: hue-rotate(90deg);
+}
+
 .logo-img {
   width: 350px;
+}
+
+.fullGame{
+  display: flex;
 }
 
 .arrows-img {
@@ -32,7 +42,7 @@ body button {
 }
 
 #game-board {
-  padding: 20px 0px;
+  padding: 0px;
 }
 #game-board {position:relative;}
 #game-board canvas {
